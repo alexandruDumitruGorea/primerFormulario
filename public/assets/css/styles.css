@@ -1,0 +1,240 @@
+*, *:after, *:before {
+      padding: 0;
+      margin: 0;
+      box-sizing: 0;
+    }
+
+    header {
+      position: sticky;
+      top: 0px;
+      height: 10vh;
+      background-color: #2196F3;
+    }
+
+    .menu {
+      display: flex;
+      list-style: none;
+      flex: 1;
+      justify-content: flex-end;
+      align-items: center;
+      height: 100%;
+      margin-right: 5%;
+    }
+
+    .menu__link {
+      padding: 15px;
+      text-transform: uppercase;
+      text-decoration: none;
+      font-family: sans-serif;
+      display: block;
+      color: rgba(255,255,255,.5);
+      transition: color .15s, background-color .15s;
+    }
+
+    .menu__link--active {
+      color: #fff;
+    }
+
+    .menu__link:hover {
+      color: #fff;
+    }
+
+    .menu__link--login {
+      border: 1px solid #fff;
+      border-radius: 5px;
+      color: #fff;
+    }
+
+    .menu__link--login:hover {
+      color: #2196F3;
+      background-color: #fff;
+    }
+
+    .content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 90vh;
+      background-color: #f2f2f2;
+      
+    }
+
+    .form {
+      display: block;
+      width: 300px;
+      padding: 30px 40px;
+      background-color: #fff;
+      font-size: 16px;
+      border-radius: 5px;
+      box-shadow: 4px 4px 4px 0 rgba(128, 128, 128, 0.35);
+      overflow: hidden;
+    }
+
+    .form__container {
+      position: relative;
+      width: 90%;
+      margin: 30px auto;
+      padding: 10px 0;
+    }
+
+    .form__container:nth-child(1) {
+      margin-top: 0;
+    }
+
+    .form__label {
+      position: absolute;
+      font-family: sans-serif;
+      font-weight: bold;
+      transform: translateY(-50%);
+      transition: all 0.25s;
+    }
+
+    .form__input {
+      width: 100%;
+      padding: 10px 0;
+      color: #444;
+      font-weight: bold;
+      box-shadow: 0 -2px #f3f3f3 inset;
+      border: none;
+      outline: none;
+      position: relative;
+      z-index: 10;
+      background-color: transparent;
+    }
+
+    .form__input[type="password"] {
+      letter-spacing: 7px;
+    }
+
+    /* Aquí se interpreta que ya es válido desde un principio :valid.
+    Además en el HTML hay un placeholder " " que lo interpreta como que tiene y está visible. :placeholder-shown. */
+    .form__input:placeholder-shown:valid ~ .form__label {
+      top: 50%;
+      left: 0;
+      color: #ccc;
+      font-size: 1em;
+    }
+
+    /* Aquí cuando un input que tiene el placeholder recibe el foco pues recibe estos valores.
+    Una vez que se haya perdido el placeholder también aplica estos valores.*/
+    .form__input:placeholder-shown:focus ~ .form__label, .form__input:not(:placeholder-shown) ~ .form__label {
+      top: 0;
+      left: 0;
+      font-size: 0.75em;
+    }
+
+    /* Aquí se le da colores al texto y a la caja de abajo que hace el texto.
+    Se ponen por separado por si se quiere cambiar en algún momento dado.*/
+    .form__input:placeholder-shown:focus ~ .form__label {
+      color: #2196F3;
+    }
+
+    .form__input:placeholder-shown:focus ~ .form__focus-animation {
+      background-color: #2196F3;
+    }
+
+    /* Pone colores al texto y a la caja cuando es valido.*/
+    .form__input:valid ~ .form__label {
+      color: #00E676;
+    }
+
+    .form__input:valid:not(:placeholder-shown) ~ .form__focus-animation {
+      background-color: #00E676;
+    }
+
+    /* Pone colores al texto y a la caja cuando es invalido.*/
+    .form__input:invalid ~ .form__label {
+      color: #F44336;
+    }
+
+    .form__input:invalid ~ .form__focus-animation {
+      background-color: #F44336;
+    }
+
+    /* Se le da animación a la caja cuando el input tiene foco.*/
+    .form__input:focus ~ .form__focus-animation {
+      width: 100%;
+      left: 0;
+    }
+
+    /* Se le da animación al texto de error cuando el input pierde el foco.*/
+    .form__input:not(:focus):invalid ~ p {
+      transform: translate(0, 5px);
+    }
+
+    .form__focus-animation {
+      position: absolute;
+      left: 50%;
+      bottom: 10px;
+      height: 3px;
+      width: 0;
+      transition: all 0.25s;
+    }
+
+    .form__error {
+      position: absolute;
+      transform: translate(-250px, 5px);
+      color: #F44336;
+      font-size: 0.75em;
+      font-family: sans-serif;
+      transition: all 0.25s;
+    }
+
+    .form__button {
+      line-height: 50px;
+      width: 100%;
+      margin-top: 15px;
+      background-color: #2196F3;
+      color: #fff;
+      font-weight: bold;
+      font-size: 1.1em;
+      border: none;
+      border-radius: 25px;
+      outline: none;
+      transition: all 0.25s;
+      cursor: pointer;
+    }
+
+    .form__button:hover {
+      background-color: #51adf6;
+      transform: scale(1.05);
+    }
+
+    .form__button:active {
+      background-color: #0960a5;
+      transform: scale(0.9);
+    }
+
+    .form__button--forgotten {
+      text-decoration: none;
+      color: rgb(107, 107, 107);
+      display: block;
+      padding: 30px 0 0 0;
+      width: 100%;
+      text-align: center;
+    }
+
+    .form__button--forgotten:hover {
+      text-decoration: underline;
+      color: #000;
+    }
+
+    .form__image {
+      width: 100%;
+      text-align: center;
+    }
+
+    .form__image svg {
+      width: 150px;
+    }
+    
+    .warning {
+      border: 2px solid #f5c6cb;
+      border-radius: 5px;
+      color: #721c24;
+      background-color: #f8d7da;
+      padding: 10px 40px;
+      margin: 20px 0;
+      position: relative;
+    }
